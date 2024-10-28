@@ -1,0 +1,32 @@
+<h2>Agregar Tarea</h2>
+
+<div class="formulario-contenedor">
+    <form (ngSubmit)="agregarTarea()">
+      <fieldset>
+        <label for="nombre-tarea">Nombre del tarea:</label>
+        <input type="text" [(ngModel)]="nombreTarea" name="nombreTarea" required>
+        <br>
+        <label for="descripcion-tarea">Descripción de la Tarea:</label>
+        <input type="text" [(ngModel)]="descripcionTarea" name="descripcionTarea" required>
+        <br>
+      </fieldset>
+      <button type="submit">Agregar tarea</button>
+    </form>
+  </div>
+
+  <div class="contenedor-tareas">
+    <h2>Lista de Tareas</h2>
+    <ul id="lista-tareas">
+      <li *ngFor="let tarea of tareas">
+        <div class="informacion-tarea">
+          <h2>{{ tarea.nombreTarea }}</h2>
+        </div>
+        <div>
+          <p><strong>Descripción:</strong> {{ tarea.descripcionTarea }}</p>
+          <button (click)="eliminarTarea(tarea.id)">Eliminar</button>
+        </div>
+
+ 
+      </li>
+    </ul>
+</div>
