@@ -1,4 +1,4 @@
-<h2>Agregar Tarea</h2>
+<h2>Agregar Tarea/Operación</h2>
 
 <div class="formulario-contenedor">
     <form (ngSubmit)="agregarTarea()">
@@ -8,6 +8,8 @@
         <br>
         <label for="descripcion-tarea">Descripción de la Tarea:</label>
         <input type="text" [(ngModel)]="descripcionTarea" name="descripcionTarea" required>
+        <label for="display-calculadora">Operación:</label>
+        <input type="text" id="displayCalcu" [value]="displayCal" readonly>
         <br>
       </fieldset>
       <button type="submit">Agregar tarea</button>

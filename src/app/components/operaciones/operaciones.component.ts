@@ -17,6 +17,9 @@ export class OperacionesComponent {
   descripcionTarea: string = '';
   tareas: any[] = [];
   idTareaSeleccionada: number | null = null;
+  displayCal: string = ''
+  operation: string = ''
+  var: number =0
 
   constructor(private RegistrosService: RegistrosService) {}
 
@@ -58,5 +61,28 @@ export class OperacionesComponent {
 
   private generarId(): number {
     return this.tareas.length > 0 ? Math.max(...this.tareas.map(t => t.id)) + 1 : 1;
+  }
+
+
+  add(value: string ){
+  
+    if(value=="="){
+      try {
+        this.operation= this.displayCal  
+        this.displayCal= eval(this.displayCal)
+        // this.calculadoraService.add(this.operation + '=' + this.displayCal)
+      } catch (error) {
+          this.displayCal = 'Error'
+      }
+      this.var=1
+    }else if(value=="C") {
+      this.displayCal= ''
+    }else if(this.var==1) {
+      this.var=0
+      this.displayCal= ''
+      this.displayCal += value
+    }else {
+      this.displayCal += value;
+    }
   }
 }
